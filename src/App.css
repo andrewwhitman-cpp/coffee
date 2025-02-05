@@ -1,0 +1,195 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background: #f5e6d3;
+  min-height: 100vh;
+  font-family: 'Georgia', serif;
+}
+
+.coffee-app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 250, 245, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.coffee-container {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.coffee-cup {
+  position: relative;
+  width: 200px;
+}
+
+.cup-body {
+  position: relative;
+  width: 160px;
+  height: 200px;
+  background: #fff;
+  border: 8px solid #8b4513;
+  border-radius: 0 0 70px 70px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.layer.base {
+  background: #3c2415;
+  z-index: 1;
+}
+
+.layer.flavor {
+  background: #6b4423;
+  z-index: 2;
+}
+
+.layer.topping {
+  background: #8b5a2b;
+  z-index: 3;
+}
+
+.ingredients-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: #fff5e6;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+  border: 1px solid #d4a76a;
+}
+
+.ingredient-category {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ingredient-category h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #5c3c2e;
+  min-width: 80px;
+  font-family: 'Georgia', serif;
+}
+
+.ingredient-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.ingredient-button {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border: 2px solid #8b4513;
+  border-radius: 6px;
+  background: #fff;
+  color: #5c3c2e;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Georgia', serif;
+}
+
+.ingredient-button:hover {
+  background: #8b4513;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.selected-ingredients {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #d4a76a;
+  text-align: center;
+}
+
+.selected-ingredients h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  color: #5c3c2e;
+  font-family: 'Georgia', serif;
+}
+
+.selected-ingredients ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.selected-ingredients li {
+  font-size: 1rem;
+  padding: 0.4rem 0;
+  color: #5c3c2e;
+  text-align: center;
+  font-family: 'Georgia', serif;
+}
+
+.reset-button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background-color: #8b4513;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Georgia', serif;
+}
+
+.reset-button:hover {
+  background-color: #6b3410;
+  transform: translateY(-2px);
+}
+
+.coffee-type {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #fff5e6;
+  border-radius: 8px;
+  border: 1px solid #d4a76a;
+}
+
+h1, h2 {
+  color: #3c2415;
+  margin-bottom: 1rem;
+  font-family: 'Georgia', serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+p {
+  color: #5c3c2e;
+  line-height: 1.6;
+  font-family: 'Georgia', serif;
+}
