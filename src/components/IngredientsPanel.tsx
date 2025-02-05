@@ -8,7 +8,7 @@ interface Ingredient {
 
 interface IngredientsPanelProps {
   ingredients: Ingredient[];
-  onAddIngredient: (ingredient: Ingredient) => void;
+  onAddIngredient: (ingredient: Ingredient | null) => void;
 }
 
 const AVAILABLE_INGREDIENTS = {
@@ -45,7 +45,7 @@ const AVAILABLE_INGREDIENTS = {
 };
 
 const IngredientsPanel: React.FC<IngredientsPanelProps> = ({ ingredients, onAddIngredient }) => {
-  const handleIngredientClick = (name: string, type: 'base' | 'flavor' | 'topping') => {
+  const handleIngredientClick = (name: string, type: 'base' | 'flavor' | 'topping' | 'milk') => {
     onAddIngredient({
       name,
       amount: 1,

@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import IngredientsPanel from './components/IngredientsPanel'
 
-const COFFEE_RECIPES = {
+interface Recipe {
+  base: string[]
+  flavor: string[]
+  topping: string[]
+}
+
+const COFFEE_RECIPES: Record<string, Recipe> = {
   'Espresso': {
     base: ['Espresso'],
     flavor: [],
@@ -71,6 +77,8 @@ interface Ingredient {
   type: 'base' | 'flavor' | 'topping' | 'milk'
 }
 
+type IngredientOrNull = Ingredient | null
+
 function App() {
   const [ingredients, setIngredients] = useState<Ingredient[]>([])
   const [coffeeType, setCoffeeType] = useState<string>('Custom Coffee')
@@ -106,14 +114,14 @@ function App() {
       similarity += Math.max(0, baseScore) // Ensure score doesn't go negative
 
       // Calculate similarity for milk ingredients (medium weight - 30%)
-      const milkMatches = currentTypes.milk.filter(item => recipe.flavor.includes(item)).length
+      const milkMatches = currentTypes.milk.filter(item => recipe.flavor.includes(item as string)).length
       const milkScore = milkMatches > 0 ? 0.3 : 0
       similarity += milkScore
 
       // Calculate similarity for flavor ingredients (medium weight - 30%)
       const flavorMatches = recipe.flavor.filter(item => currentTypes.flavor.includes(item)).length
       const flavorMissing = recipe.flavor.filter(item => !currentTypes.flavor.includes(item)).length
-      const flavorExtra = currentTypes.flavor.filter(item => !recipe.flavor.includes(item)).length
+      const flavorExtra = currentTypes.flavor.filter(item => !recipe.flavor.includes(item as string)).length
       const flavorPenalty = (flavorMissing + flavorExtra) * 0.1 // Smaller penalty for flavor mismatches
       const flavorScore = recipe.flavor.length > 0 ? 
         ((flavorMatches / recipe.flavor.length) * 0.3 - flavorPenalty) : 
@@ -123,7 +131,7 @@ function App() {
       // Calculate similarity for topping ingredients (lowest weight - 20%)
       const toppingMatches = recipe.topping.filter(item => currentTypes.topping.includes(item)).length
       const toppingMissing = recipe.topping.filter(item => !currentTypes.topping.includes(item)).length
-      const toppingExtra = currentTypes.topping.filter(item => !recipe.topping.includes(item)).length
+      const toppingExtra = currentTypes.topping.filter(item => !recipe.topping.includes(item as string)).length
       const toppingPenalty = (toppingMissing + toppingExtra) * 0.05 // Smallest penalty for topping mismatches
       const toppingScore = recipe.topping.length > 0 ? 
         ((toppingMatches / recipe.topping.length) * 0.2 - toppingPenalty) : 
@@ -140,7 +148,7 @@ function App() {
     setCoffeeType(bestMatch)
   }
 
-  const handleAddIngredient = (ingredient: Ingredient | null) => {
+  const handleAddIngredient = (ingredient: IngredientOrNull) => {
     if (ingredient === null) {
       setIngredients([])
       return
