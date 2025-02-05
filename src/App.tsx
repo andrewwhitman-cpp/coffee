@@ -158,7 +158,7 @@ function App() {
 
   return (
     <div className="coffee-app">
-      <h1>Custom Coffee Creator</h1>
+      <h1>Coffee Creator</h1>
       <div className="coffee-type">
         <h2>{coffeeType}</h2>
         <p>{coffeeType === 'Custom Coffee' ? 'Add ingredients to see what type of coffee your creation matches!' : 'Your creation matches a classic coffee drink!'}</p>
